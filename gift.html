@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Подарочный котик 🎁</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: linear-gradient(135deg, #ffd6e0, #c7f9cc);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+  color: #3d2a2a;
+
+  padding: 40px 20px;
+  box-sizing: border-box;
+
+  overflow-x: hidden;
+
+  font-family: 'Comfortaa', sans-serif;
+}
+
+/* 🎁 котик (НОВЫЙ ЭФФЕКТ) */
+.hero-img {
+  width: 230px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 30px;
+
+  margin-top: 20px;
+  margin-bottom: 25px;
+
+  animation: floatFade 4s infinite ease-in-out;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* 🌟 плавание + исчезновение */
+@keyframes floatFade {
+  0% {
+    opacity: 0.2;
+    transform: translateY(10px) scale(0.95);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.05);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.05);
+  }
+
+  100% {
+    opacity: 0.2;
+    transform: translateY(10px) scale(0.95);
+  }
+}
+
+/* 📄 текст */
+.text {
+  max-width: 850px;
+  width: 100%;
+
+  font-size: 18px;
+  line-height: 1.8;
+
+  background: rgba(255,255,255,0.55);
+  padding: 25px 30px;
+  border-radius: 18px;
+
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+  text-align: left;
+}
+
+/* кнопки */
+.buttons {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+
+  background: white;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* падающие эффекты */
+.heart {
+  position: fixed;
+  top: -20px;
+  animation: fall 5s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+<!-- 🎵 МУЗЫКА -->
+<audio id="music" src="миябойка.mp3"></audio>
+
+<!-- 🎁 котик -->
+<img src="котвкоробке1.jpg" class="hero-img">
+
+<!-- 💛 текст -->
+<div class="text">
+
+<p>Этот котик - подарок для Ксюши. Он как миленький источник сюрпризов и радости, которые могут появляться в твоей жизни 🎁</p>
+
+<p>Он немного спрятался, чтобы неожиданно появиться и напугать тебя, но совсем не по-настоящему - просто чтобы добавить веселья 🧨</p>
+
+<p>С ним тебе точно не будет скучно. Он всегда рядом, чтобы поднимать настроение и делать день чуть ярче🔥</p>
+
+<p>Иногда он будет “помогать” тебе делать уроки… а иногда просто засыпать прямо на твоих рисунках 😼</p>
+
+<p>Так что с ним жизнь точно станет более живой и интересной🩵</p>
+
+<p><b>С днем рождения, Ксюсюсюшка 🍹🧋🧉🎈</b><br>
+Пусть твоя жизнь будет наполнена такими же неожиданными и теплыми сюрпризами, как эта кошечка Ненси🖤🩶🤍</p>
+
+</div>
+
+<!-- кнопки -->
+<div class="buttons">
+  <button onclick="location.href='index.html'">Падарить ше котика) 😸</button>
+  <button onclick="alert('неа, роскошный максимум')">Базовый минимум</button>
+</div>
+
+<script>
+/* 🎵 запуск музыки */
+window.addEventListener("load", () => {
+  const music = document.getElementById("music");
+  music.volume = 0.5;
+
+  music.play().catch(() => {});
+});
+
+/* падающие сердечки */
+const hearts = ["⚡", "🎀", "🎁", "💥","🌈"];
+
+function createHeart() {
+  const el = document.createElement("div");
+
+  el.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+  el.className = "heart";
+
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.fontSize = (16 + Math.random() * 28) + "px";
+
+  document.body.appendChild(el);
+
+  setTimeout(() => el.remove(), 5000);
+}
+
+setInterval(createHeart, 120);
+
+</script>
+
+</body>
+</html>

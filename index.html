@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>С Днём Рождения Ксюшечка 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+body.fade-out {
+  opacity: 0;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  color: white;
+  font-size: 40px;
+  margin-bottom: 10px;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+  font-family: 'Playpen Sans', sans-serif;
+  color: white;
+  font-size: 18px;
+  margin-bottom: 25px; /* 🔧 уменьшил чтобы аккуратнее */
+}
+
+/* 🎵 кнопка */
+.music-btn {
+  margin-bottom: 25px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+
+  font-family: 'Playpen Sans', sans-serif;
+  font-size: 16px;
+
+  background: white;
+  color: #333;
+
+  transition: 0.2s;
+}
+
+.music-btn:hover {
+  transform: scale(1.05);
+}
+
+/* 🧩 карточки */
+.cards {
+  display: flex;
+  gap: 30px;
+
+  /* 🔥 ВАЖНО — это фиксит твою проблему */
+  margin-top: 40px;
+}
+
+.card {
+  width: 220px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 20px;
+  cursor: pointer;
+
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.card:hover {
+  transform: translateY(-15px) scale(1.07);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+}
+</style>
+</head>
+
+<body>
+
+<h1>С Днём Рождения Ксюшечка 💖</h1>
+
+<div class="subtitle">
+  Выбери котика для Ксюшёчки 🐱
+</div>
+
+<!-- 🎵 музыка -->
+<audio id="music" src="винни.mp3"></audio>
+
+<!-- 🎵 кнопка -->
+<button class="music-btn" onclick="playMusic()">
+  Для Ксюшкі ❤️‍🔥❤️‍🩹❤️🩷🧡💛💚💙🩵💜🤎🖤🩶🤍💌💘💝💖💗💓💞💕💟
+</button>
+
+<!-- 🖼️ карточки -->
+<div class="cards">
+
+  <img src="котсерце2.jpg" class="card" onclick="go('heart.html')">
+
+  <img src="котсонце.jpg" class="card" onclick="go('sun.html')">
+
+  <img src="котвкоробке1.jpg" class="card" onclick="go('gift.html')">
+
+</div>
+
+<script>
+
+function go(page) {
+  document.body.classList.add("fade-out");
+
+  setTimeout(() => {
+    window.location.href = page;
+  }, 400);
+}
+
+/* 🎵 музыка */
+function playMusic() {
+  const music = document.getElementById("music");
+  music.volume = 0.5;
+  music.play();
+}
+
+</script>
+
+</body>
+</html>

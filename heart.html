@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Для Ксюши 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: linear-gradient(135deg, #ff9aa2, #ff4d6d);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: Arial;
+  text-align: center;
+  color: white;
+
+  overflow-x: hidden;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* 🖼️ котик */
+.hero-img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 20px;
+
+  margin-top: 20px;
+  margin-bottom: 25px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* 💓 пульсация */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* 📄 текст */
+.text {
+  width: 100%;
+  max-width: 900px;
+
+  font-size: 18px;
+  line-height: 1.7;
+
+  color: white;
+
+  background: rgba(0, 0, 0, 0.25);
+  padding: 25px 30px;
+  border-radius: 16px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+
+  text-align: left;
+
+  font-family: 'Playfair Display', serif;
+}
+
+/* ❓ вопрос */
+.question {
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+/* 🔘 КНОПКИ (ВОЗВРАТ СТИЛЯ) */
+.buttons {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+}
+
+/* как у тебя раньше — простые светлые кнопки */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  background: white;
+  color: #333;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* падающие элементы */
+.heart, .number {
+  position: fixed;
+  top: -20px;
+  animation: fall 5s linear forwards;
+  pointer-events: none;
+}
+
+/* падение */
+@keyframes fall {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 МУЗЫКА -->
+<audio id="music" src="heart.mp3"></audio>
+
+<!-- 🖼️ котик -->
+<img src="котсерце2.jpg" class="hero-img">
+
+<!-- 💖 ТЕКСТ -->
+<div class="text">
+
+<p>Пусть этот котик станет для Ксюши тихим источником тепла и любви💗.</p>
+
+<p>Ксюш, видишь, как он пульсирует? - это маленький знак его чувств к тебе❤️‍🩹.</p>
+
+<p>Он всегда рядом, будто тихо наблюдает за тобой и радуется, когда тебе хорошо.  
+И когда замерзнешь, он обязательно окажется рядом и согреет тебя своим теплом.</p>
+
+<p>Посмотри, как он приоделся специально для твоего дня рождения.  
+Пока он совсем маленький и немного стесняется, но очень старается быть рядом с тобой💕.</p>
+
+<p>Поэтому не забывай про него, как и он не будет забывать про тебя☺️.</p>
+
+<p>И если вдруг ты подумаешь:  
+<em>“я маленький, бедный котик, меня никто не любит😿”</em></p>
+
+<p>вспомни о своём новом друге — Тише🖤.</p>
+
+<p><b>З днем народження, Ксюшечка 🍫🍭🎂</b><br>
+Пусть любовь всегда живет в твоем сердце и наполняет все вокруг тебя. 💖</p>
+
+</div>
+
+<!-- ❓ -->
+<div class="question">
+Хочите подарувати Ксюшечке ше одного кітика?😽
+</div>
+
+<div class="buttons">
+  <button onclick="location.href='index.html'">Да 😻</button>
+  <button onclick="alert('Так, плохие слова нам не надо тут говорить, Солнышко😘 ')">Обійдеться🙄</button>
+</div>
+
+<script>
+
+/* 🎵 запуск музыки */
+window.addEventListener("load", () => {
+  const music = document.getElementById("music");
+  music.volume = 0.5;
+
+  music.play().catch(() => {});
+});
+
+/* падающие элементы */
+const items = ["❤️", "💖", "💗", "💘", "1437", "LOVE"];
+
+function createItem() {
+  const el = document.createElement("div");
+
+  const text = items[Math.floor(Math.random() * items.length)];
+  el.innerText = text;
+
+  el.className = (text === "1437" || text === "LOVE") ? "number" : "heart";
+
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.fontSize = (14 + Math.random() * 24) + "px";
+
+  document.body.appendChild(el);
+
+  setTimeout(() => el.remove(), 5000);
+}
+
+setInterval(createItem, 90);
+
+</script>
+
+</body>
+</html>
