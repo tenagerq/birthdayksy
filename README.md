@@ -1,1 +1,1 @@
-![](ksysha.png) ![](qr-code.png)
+![](qr-code.png)
